@@ -20,13 +20,13 @@ export const site = {
   availability: "Open to work",
 
   /** Used for canonical URLs and social cards. Update after the first deploy. */
-  url: "https://example.vercel.app",
+  url: "https://www.dhruvranjan.dev",
 
   email: "irldhruv196@gmail.com",
 
   links: {
     github: "https://github.com/dhruv-ship-it",
-    linkedin: "https://linkedin.com/in/dhruv-ranjan",
+    linkedin: "https://www.linkedin.com/in/dhruv-ranjan-b905b82a0",
     leetcode: "https://leetcode.com/u/Dhruvcoded",
     twitter: "",
     /** Save the PDF as public/<name>.pdf, then put "/<name>.pdf" here. */
@@ -45,6 +45,7 @@ export const site = {
     /** Short, recruiter-relevant extras. Leave the array empty to hide. */
     highlights: [
       "NVIDIA Deep Learning Institute — Accelerating End-to-End Data Science Workflows (2025)",
+      "NVIDIA Conversational AI elective — NLP, speech processing and generative AI",
       "700+ data structures and algorithms problems across LeetCode, GeeksforGeeks and Codeforces",
     ],
   },
@@ -64,10 +65,12 @@ export const site = {
     {
       role: "Software Engineer (Freelance)",
       org: "Entrance UG",
-      dates: "Jun – Sep 2026",
+      dates: "Jun – Aug 2026",
       stack: ["React", "Node.js", "PostgreSQL", "AWS"],
       points: [
-        "Built a four-product exam-prep platform on my own and ran it in production through launch. It serves 500+ students and takes live payments.",
+        "Built a four-product exam-prep platform for IPMAT and CUET on my own: timed mocks, lectures, daily reading-comprehension drills and mentorship, with separate portals for students, parents, mentors and admins on one 100-table Postgres schema. It serves 500+ students.",
+        "Built the payments layer so money and access can never disagree: the server checks every payment with the gateway directly, settlement is idempotent, and an hourly sweep catches anything that went quiet. 29 payment scenarios cover it.",
+        "Built and ran the API's CI/CD pipeline on AWS, GitHub Actions through ECR to EC2 over SSM, then cut the image build time 40%, from 1m50s to 1m06s, by caching the dependency layer.",
       ],
       href: "/work/entrance-ug",
     },
@@ -77,6 +80,7 @@ export const site = {
       dates: "May 2025 – Jan 2026",
       stack: ["Redis", "SQL", "Backend"],
       points: [
+        "Designed the normalized relational schema for a production e-commerce platform, with ACID guarantees.",
         "Cut bulk catalog API latency to under 50ms by rewriting query plans, adding Redis caching and fixing index coverage.",
         "Made orders concurrency-safe with row-level locking and idempotency keys, which stopped duplicate orders and overselling.",
       ],
@@ -103,6 +107,10 @@ export const site = {
     {
       group: "Backend",
       items: ["Node.js", "Express", "Prisma", "Mongoose", "FastAPI", "REST APIs", "JWT auth", "RBAC"],
+    },
+    {
+      group: "AI and LLM",
+      items: ["RAG", "LLM APIs (Claude)", "Embeddings", "Hybrid search (BM25 + vector)", "ChromaDB"],
     },
     {
       group: "Data",
