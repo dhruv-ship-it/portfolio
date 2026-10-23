@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Theme tokens. Light is the default; the media query below swaps the same
+   variables when the reader's system asks for dark, so every utility built
+   from these tokens follows automatically.
+
+   `@theme` must stay at the top level — Tailwind flattens a nested one.
+   --------------------------------------------------------------------------- */
+
+@theme {
+  /* surfaces */
+  --color-paper: #fbfaf8;
+  --color-surface: #ffffff;
+  --color-tint: #f4f3ef;
+
+  /* text */
+  --color-ink: #16161a;
+  --color-ink-soft: #3f3f46;
+  --color-muted: #6b6b76;
+
+  /* rules */
+  --color-line: #e4e2dc;
+  --color-line-soft: #eeece8;
+
+  /* accents: indigo carries links and actions, clay carries labels and
+     numbers, green carries anything that means "live". */
+  --color-accent: #3056d3;
+  --color-accent-soft: #eaeeff;
+  --color-clay: #b2541f;
+  --color-clay-soft: #fbeee5;
+  --color-signal: #10845c;
+  --color-signal-soft: #e6f5ef;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SFMono-Regular", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #0c0c10;
+    --color-surface: #15151b;
+    --color-tint: #121218;
+
+    --color-ink: #f4f4f5;
+    --color-ink-soft: #d0d0d6;
+    --color-muted: #9898a4;
+
+    --color-line: #27272f;
+    --color-line-soft: #1d1d24;
+
+    --color-accent: #90b0ff;
+    --color-accent-soft: #171d33;
+    --color-clay: #e39b6a;
+    --color-clay-soft: #2a1d14;
+    --color-signal: #3ddc9a;
+    --color-signal-soft: #10241c;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* so anchored headings don't hide under the sticky header */
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Helpers used across the pages.
+   --------------------------------------------------------------------------- */
+
+/* Eyebrows and field labels: mono, small, wide, clay. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+}
+
+/* Same label, in the link colour. */
+.label-accent {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* The quieter variant, for field names inside a block. */
+.label-muted {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Reading column for long-form prose. */
+.prose-col {
+  max-width: 68ch;
+}
+
+.prose-col p {
+  line-height: 1.75;
+  color: var(--color-ink-soft);
+}
+
+/* A soft wash behind the hero so the top of the page isn't flat. */
+.hero-wash {
+  position: relative;
+}
+
+.hero-wash::before {
+  content: "";
+  position: absolute;
+  inset: -40% -30% 20% -30%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42rem 26rem at 18% 18%, var(--color-accent-soft), transparent 70%),
+    radial-gradient(34rem 22rem at 82% 8%, var(--color-clay-soft), transparent 72%);
+  opacity: 0.85;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-wash::before {
+    opacity: 0.55;
+  }
+}
